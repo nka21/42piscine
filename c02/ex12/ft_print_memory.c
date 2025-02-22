@@ -6,11 +6,12 @@
 /*   By: nkojima <nkojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:41:10 by nkojima           #+#    #+#             */
-/*   Updated: 2025/02/20 21:33:38 by nkojima          ###   ########.fr       */
+/*   Updated: 2025/02/22 15:48:49 by nkojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 void	ft_print_hex(unsigned char c)
@@ -67,7 +68,6 @@ void	ft_print_ascii_memory(unsigned char *ptr, unsigned int size)
 	unsigned int	cnt_byte;
 
 	cnt_byte = 0;
-	write(1, " ", 1);
 	while (cnt_byte < size)
 	{
 		if (ptr[cnt_byte] >= 32 && ptr[cnt_byte] <= 126)
@@ -102,10 +102,10 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	return (addr);
 }
 
-// int	main(void)
-// {
-// 	char	data[] = "Bonjour les amis, ceci est un test de mémoire.";
+int	main(void)
+{
+	char	data[] = "Bonjour les amis, c\tci est un test de mém";
 
-// 	ft_print_memory(data, sizeof(data));
-// 	return (0);
-// }
+	ft_print_memory(data, strlen(data));
+	return (0);
+}
