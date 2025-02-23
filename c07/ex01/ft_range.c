@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkojima <nkojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 03:00:15 by nkojima           #+#    #+#             */
-/*   Updated: 2025/02/18 07:41:39 by nkojima          ###   ########.fr       */
+/*   Created: 2025/02/22 17:35:28 by nkojima           #+#    #+#             */
+/*   Updated: 2025/02/22 18:44:18 by nkojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,38 @@
 
 int	*ft_range(int min, int max)
 {
+	int	len;
 	int	i;
-	int	*ranges;
+	int	*arr;
 
 	if (min >= max)
 		return (NULL);
-	ranges = (int *)malloc(sizeof(int) * (max - min));
+	len = max - min;
+	arr = (int *)malloc(sizeof(int) * len);
+	if (arr == NULL)
+		return (NULL);
 	i = 0;
-	while (i < (max - min))
+	while (i < len)
 	{
-		ranges[i] = min + i;
+		arr[i] = min + i;
 		i++;
 	}
-	return (ranges);
+	return (arr);
 }
 
-// int main(int argc, char *argv[])
+// int	main(void)
 // {
-// 	(void) argc;
-// 	int min = atoi(argv[1]);
-// 	int max = atoi(argv[2]);
-// 	int *tmp = ft_range(min, max);
+// 	int	min;
+// 	int	max;
+// 	int	*result;
+
+// 	min = 2;
+// 	max = 4;
+// 	result = ft_range(min, max);
 // 	for (int i = 0; i < max - min; i++)
-// 		printf("%d ", tmp[i]);
+// 	{
+// 		printf("%d\n", result[i]);
+// 	}
+//  free(result);
 // 	return (0);
 // }

@@ -5,25 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkojima <nkojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 08:34:57 by nkojima           #+#    #+#             */
-/*   Updated: 2025/02/18 09:17:40 by nkojima          ###   ########.fr       */
+/*   Created: 2025/02/22 18:48:09 by nkojima           #+#    #+#             */
+/*   Updated: 2025/02/22 20:04:22 by nkojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int	ft_strlen(char *src)
+int	ft_strlen(char *str)
 {
 	int	len;
 
 	len = 0;
-	while (src[len])
+	while (str[len])
 		len++;
 	return (len);
 }
 
-int	ft_total_len(int size, char **strs, char *sep)
+char	*ft_strcat(char *dest, char *src)
+{
+	int	dest_len;
+	int	i;
+
+	dest_len = ft_strlen(dest);
+	i = 0;
+	while (src[i])
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+	dest[dest_len + i] = '\0';
+	return (dest);
+}
+
+int	ft_total_size(int size, char **strs, char *sep)
 {
 	int	total;
 	int	i;
@@ -42,32 +58,17 @@ int	ft_total_len(int size, char **strs, char *sep)
 	return (total);
 }
 
-char	*ft_strcat(char *dest, char *src)
-{
-	char	*start_ptr;
-
-	start_ptr = dest;
-	while (*dest)
-		dest++;
-	while (*src)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (start_ptr);
-}
-
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*result;
 	int		total_size;
 	int		i;
 
-	total_size = ft_total_len(size, strs, sep);
-	result = (char *)malloc(total_size);
-	if (!result)
+	total_size = ft_total_size(size, strs, sep);
+	result = (char *)malloc(sizeof(char) * total_size);
+	if (result == NULL)
 		return (NULL);
 	result[0] = '\0';
-	if (size == 0)
-		return (result);
 	i = 0;
 	while (i < size)
 	{
@@ -81,16 +82,15 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 // int	main(void)
 // {
-// 	char	*strs[] = {"Hello", "42", "Tokyo"};
+// 	int		size;
+// 	char	*strs[] = {"Hello", "World!", "42Tokyo"};
 // 	char	*sep;
-// 	char	*ans;
+// 	char	*result;
 
+// 	size = 3;
 // 	sep = ", ";
-// 	ans = ft_strjoin(3, strs, sep);
-// 	if (!ans)
-// 		printf("NULL\n");
-// 	else
-// 		printf("ans: %s\n", ans);
-// 	free(ans);
+// 	result = ft_strjoin(size, strs, sep);
+// 	printf("%s\n", result);
+// 	free(result);
 // 	return (0);
 // }

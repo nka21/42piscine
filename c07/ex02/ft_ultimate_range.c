@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkojima <nkojima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 04:57:14 by nkojima           #+#    #+#             */
-/*   Updated: 2025/02/18 08:31:43 by nkojima          ###   ########.fr       */
+/*   Created: 2025/02/22 18:02:12 by nkojima           #+#    #+#             */
+/*   Updated: 2025/02/22 18:49:36 by nkojima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
-	int	i;
 	int	size;
+	int	i;
 
 	if (min >= max)
 	{
@@ -25,7 +25,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	}
 	size = max - min;
 	*range = (int *)malloc(sizeof(int) * size);
-	if (!*range)
+	if (*range == NULL)
 		return (-1);
 	i = 0;
 	while (i < size)
@@ -39,20 +39,12 @@ int	ft_ultimate_range(int **range, int min, int max)
 // int	main(void)
 // {
 // 	int	*arr;
-// 	int	size;
+// 	int	min;
+// 	int	max;
 
-// 	size = ft_ultimate_range(&arr, 2, 4);
-// 	if (size == -1)
-// 		printf("Error\n");
-// 	else if (size == 0)
-// 		printf("min >= max");
-// 	else
-// 	{
-// 		printf("size: %d\n", size);
-// 		for (int i = 0; i < size; i++)
-// 			printf("%d ", arr[i]);
-// 		printf("\n");
-// 		free(arr);
-// 	}
+// 	min = 2;
+// 	max = 4;
+// 	printf("%d\n", ft_ultimate_range(&arr, min, max));
+//  free(arr);
 // 	return (0);
 // }
